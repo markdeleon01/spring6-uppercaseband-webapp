@@ -43,7 +43,7 @@ jobs:
       - run: mvn test integration-test
 
       - store_test_results:
-          path: target/my-reports
+          path: target/surefire-reports
 
       - run:
           name: Send to CodeCov

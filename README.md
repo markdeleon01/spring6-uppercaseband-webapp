@@ -2,6 +2,8 @@
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/markdeleon01/spring6-uppercaseband-webapp/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/markdeleon01/spring6-uppercaseband-webapp/tree/main)
 
+[![codecov](https://codecov.io/gh/markdeleon01/spring6-uppercaseband-webapp/graph/badge.svg?token=WH38IFOEXS)](https://codecov.io/gh/markdeleon01/spring6-uppercaseband-webapp)
+
 This repository is for a RESTful web application built on Spring Framework 6 for my band's website.
 
 This is a Spring Boot 3 web application that serves up articles about the UPPERCASE band.
