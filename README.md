@@ -1,5 +1,7 @@
 # Spring6 MVC REST backend web application for UPPERCASE band
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/markdeleon01/spring6-uppercaseband-webapp/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/markdeleon01/spring6-uppercaseband-webapp/tree/main)
+
 This repository is for a RESTful web application built on Spring Framework 6 for my band's website.
 
 This is a Spring Boot 3 web application that serves up articles about the UPPERCASE band.
