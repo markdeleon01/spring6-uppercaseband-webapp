@@ -49,4 +49,5 @@ jobs:
           name: Send to CodeCov
           command: bash <(curl -s https://codecov.io/bash)
 
-      - codecov/upload -f /home/circleci/repo/target/surefire-reports/TEST-com.uppercaseband.Spring6UppercaseBandWebApplicationTests.xml
+      - codecov/upload:
+          file: "/home/circleci/repo/target/surefire-reports/*.xml"
