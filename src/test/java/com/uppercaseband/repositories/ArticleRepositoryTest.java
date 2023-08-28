@@ -44,6 +44,9 @@ class ArticleRepositoryTest {
         assertThat(savedArticle.getDisplayOrder()).isNotNull();
         assertThat(savedArticle.getCategory()).isNotNull();
         assertThat(savedArticle.getSubContent()).isNotNull();
+        assertThat(savedArticle.toString()).isNotNull();
+        assertEquals(savedArticle.hashCode(),savedArticle.hashCode());
+        assertEquals(savedArticle.equals(savedArticle), true);
 
         assertThat(savedArticle.getMedia()).isNotNull();
         assertThat(savedArticle.getMedia().getId()).isNotNull();
