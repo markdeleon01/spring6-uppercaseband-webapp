@@ -19,6 +19,7 @@ class Spring6UppercaseBandWebApplicationTests {
 	void contextLoads() {
 		log.debug("Spring6UppercaseBandWebApplication context loaded");
 		// perform a sanity check to verify that the beans were loaded (not null)
+		assertNotNull(Spring6UppercaseBandWebApplication.class);
 		assertNotNull(articleRepository);
 	}
 
