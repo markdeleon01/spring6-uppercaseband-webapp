@@ -48,5 +48,6 @@ class ArticleRepositoryTest {
         assertThat(savedArticle.getMedia().getId()).isNotNull();
         assertThat(savedArticle.getMedia().getPath()).isNotNull();
         assertThat(savedArticle.getMedia().getType()).isNotNull();
+        assertThat(savedArticle.getMedia().toString()).isNotNull();
     }
 }
