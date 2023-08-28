@@ -35,5 +35,15 @@ class ArticleRepositoryTest {
         Article savedArticle = articleRepository.save(article);
         assertThat(savedArticle).isNotNull();
         assertThat(savedArticle.getId()).isNotNull();
+        assertThat(savedArticle.getTitle()).isNotNull();
+        assertThat(savedArticle.getDescription()).isNotNull();
+        assertThat(savedArticle.getDisplayOrder()).isNotNull();
+        assertThat(savedArticle.getCategory()).isNotNull();
+        assertThat(savedArticle.getSubContent()).isNotNull();
+
+        assertThat(savedArticle.getMedia()).isNotNull();
+        assertThat(savedArticle.getMedia().getId()).isNotNull();
+        assertThat(savedArticle.getMedia().getPath()).isNotNull();
+        assertThat(savedArticle.getMedia().getType()).isNotNull();
     }
 }
