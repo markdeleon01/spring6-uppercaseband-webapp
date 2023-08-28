@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @DataJpaTest
@@ -19,6 +20,8 @@ class ArticleRepositoryTest {
 
     @Test
     void testSaveArticle() {
+        assertNotNull(articleRepository);
+        
         Article article = new Article();
         article.setTitle("Tanging Ikaw");
         article.setDescription("The brand new single from UPPERCASE released under Radio Insect Records");
