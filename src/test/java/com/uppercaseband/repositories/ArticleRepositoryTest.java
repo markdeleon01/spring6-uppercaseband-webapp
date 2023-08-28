@@ -21,7 +21,7 @@ class ArticleRepositoryTest {
     @Test
     void testSaveArticle() {
         assertNotNull(articleRepository);
-        
+
         Article article = new Article();
         article.setTitle("Tanging Ikaw");
         article.setDescription("The brand new single from UPPERCASE released under Radio Insect Records");
