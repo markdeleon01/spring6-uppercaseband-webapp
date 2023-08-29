@@ -5,6 +5,7 @@ import com.uppercaseband.domain.Category;
 import com.uppercaseband.domain.Media;
 import com.uppercaseband.domain.MediaType;
 import com.uppercaseband.model.ArticleDTO;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -14,9 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ContextConfiguration(classes = {
-        ArticleMapperImpl.class,
-        MediaMapperImpl.class})
 class ArticleMapperTest {
 
     static final String TITLE = "someTitle";
@@ -26,9 +24,13 @@ class ArticleMapperTest {
     @Autowired
     ArticleMapper articleMapper;
 
+    @BeforeAll
+    static void checkMapper() {
+        assertNotNull(ArticleMapper.INSTANCE);
+    }
+
     @Test
     void articleToArticleDTO() throws Exception {
-        assertNotNull(articleMapper);
 
         //given
         Article article = new Article();
