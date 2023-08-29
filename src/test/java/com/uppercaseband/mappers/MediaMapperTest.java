@@ -3,6 +3,7 @@ package com.uppercaseband.mappers;
 import com.uppercaseband.domain.Media;
 import com.uppercaseband.domain.MediaType;
 import com.uppercaseband.model.MediaDTO;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,9 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ContextConfiguration(classes = {
-        ArticleMapperImpl.class,
-        MediaMapperImpl.class})
 class MediaMapperTest {
 
     public static final String IMAGE = "IMAGE";
@@ -21,6 +19,11 @@ class MediaMapperTest {
     @Autowired
     MediaMapper mediaMapper;
 
+
+    @BeforeAll
+    static void checkMapper() {
+        assertNotNull(MediaMapper.INSTANCE);
+    }
 
     @Test
     void mediaToMediaDTO() throws Exception {
