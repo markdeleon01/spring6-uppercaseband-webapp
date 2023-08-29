@@ -18,6 +18,8 @@ import java.util.Arrays;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -87,6 +89,8 @@ class ArticleControllerTest {   //this is essentially an integration test
                         .contentType(MediaType.APPLICATION_JSON) )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.articles.length()", is(3)));
+
+        verify(articleService, times(1)).getAllArticles();
     }
 
 
@@ -103,5 +107,7 @@ class ArticleControllerTest {   //this is essentially an integration test
                         .contentType(MediaType.APPLICATION_JSON) )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.articles.length()", is(2)));
+
+        verify(articleService, times(1)).getArticlesByCategory(anyString());
     }
 }
