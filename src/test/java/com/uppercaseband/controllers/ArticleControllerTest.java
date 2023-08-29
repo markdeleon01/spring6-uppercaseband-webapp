@@ -3,8 +3,8 @@ package com.uppercaseband.controllers;
 import com.uppercaseband.model.ArticleDTO;
 import com.uppercaseband.model.ArticleListDTO;
 import com.uppercaseband.model.MediaDTO;
-import com.uppercaseband.services.ArticleService;
 
+import com.uppercaseband.services.ArticleServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ class ArticleControllerTest {   //this is essentially an integration test
     MockMvc mockMvc;    //provided by Spring Context because of @WebMvcTest annotation
 
     @MockBean   //provided by Spring Context - Spring creates the Mockito mock and injects it into this class
-    ArticleService articleService;  //instead of MockitoAnnotations.initMocks(this);
+    ArticleServiceImpl articleServiceImpl;  //instead of MockitoAnnotations.initMocks(this);
 
 
     static ArticleDTO article1;
@@ -82,7 +82,7 @@ class ArticleControllerTest {   //this is essentially an integration test
         ArticleListDTO articleListDTO = new ArticleListDTO(Arrays.asList(article1, article2, article3));
 
         //given that the service call will return the mocked data
-        given(articleService.getAllArticles()).willReturn(articleListDTO);
+        given(articleServiceImpl.getAllArticles()).willReturn(articleListDTO);
 
         //perform the REST call to the controller to get all articles
         mockMvc.perform( get(ArticleController.BASE_URL)
@@ -90,7 +90,7 @@ class ArticleControllerTest {   //this is essentially an integration test
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.articles.length()", is(3)));
 
-        verify(articleService, times(1)).getAllArticles();
+        verify(articleServiceImpl, times(1)).getAllArticles();
     }
 
 
@@ -100,7 +100,7 @@ class ArticleControllerTest {   //this is essentially an integration test
         ArticleListDTO articleListDTO = new ArticleListDTO(Arrays.asList(article1, article2));
 
         //given that the service call will return the mocked data
-        given(articleService.getArticlesByCategory(anyString())).willReturn(articleListDTO);
+        given(articleServiceImpl.getArticlesByCategory(anyString())).willReturn(articleListDTO);
 
         //perform the REST call to the controller to get articles by category
         mockMvc.perform( get(ArticleController.BASE_URL+"?category=HIGHLIGHTS")
@@ -108,6 +108,6 @@ class ArticleControllerTest {   //this is essentially an integration test
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.articles.length()", is(2)));
 
-        verify(articleService, times(1)).getArticlesByCategory(anyString());
+        verify(articleServiceImpl, times(1)).getArticlesByCategory(anyString());
     }
 }
