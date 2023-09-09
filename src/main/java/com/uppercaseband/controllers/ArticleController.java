@@ -1,14 +1,15 @@
 package com.uppercaseband.controllers;
 
+import com.uppercaseband.model.ArticleDTO;
 import com.uppercaseband.model.ArticleListDTO;
 import com.uppercaseband.services.ArticleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
 @RestController
-@RequestMapping(ArticleController.BASE_URL)
 public class ArticleController {
 
     //provide a constant for the base URL
@@ -23,14 +24,23 @@ public class ArticleController {
     }
 
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public ArticleListDTO getArticles(@RequestParam Optional<String> category) {
+    @GetMapping(ArticleController.BASE_URL)
+    public ArticleListDTO getAllArticles() {
+
+        return articleService.getAllArticles();
+    }
+
+    @GetMapping(path = ArticleController.BASE_URL+"/category/{category}")
+    public ArticleListDTO getArticles(@PathVariable Optional<String> category) {
 
         if (category.isPresent()) {
-            return articleService.getArticlesByCategory(category.get());
+            try {
+                return articleService.getArticlesByCategory(category.get().toUpperCase());
+            } catch (IllegalArgumentException illegalArgumentException) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, illegalArgumentException.getMessage(), illegalArgumentException.getCause());
+            }
         } else {
-            return articleService.getAllArticles();
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 }

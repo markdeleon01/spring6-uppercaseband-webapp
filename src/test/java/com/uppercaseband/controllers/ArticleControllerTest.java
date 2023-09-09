@@ -103,10 +103,24 @@ class ArticleControllerTest {   //this is essentially an integration test
         given(articleServiceImpl.getArticlesByCategory(anyString())).willReturn(articleListDTO);
 
         //perform the REST call to the controller to get articles by category
-        mockMvc.perform( get(ArticleController.BASE_URL+"?category=HIGHLIGHTS")
+        mockMvc.perform( get(ArticleController.BASE_URL+"/category/HIGHLIGHTS")
                         .contentType(MediaType.APPLICATION_JSON) )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.articles.length()", is(2)));
+
+        verify(articleServiceImpl, times(1)).getArticlesByCategory(anyString());
+    }
+
+    @Test
+    void getArticlesByInvalidCategory() throws Exception {
+
+        //given that the service call will return IllegalArgumentException
+        given(articleServiceImpl.getArticlesByCategory(anyString())).willThrow(new IllegalArgumentException());
+
+        //perform the REST call to the controller to get articles by invalid category
+        mockMvc.perform( get(ArticleController.BASE_URL+"/category/blah")
+                        .contentType(MediaType.APPLICATION_JSON) )
+                .andExpect(status().isNotFound());
 
         verify(articleServiceImpl, times(1)).getArticlesByCategory(anyString());
     }
