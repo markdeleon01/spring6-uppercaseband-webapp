@@ -33,14 +33,10 @@ public class ArticleController {
     @GetMapping(path = ArticleController.BASE_URL+"/category/{category}")
     public ArticleListDTO getArticles(@PathVariable Optional<String> category) {
 
-        if (category.isPresent()) {
-            try {
-                return articleService.getArticlesByCategory(category.get().toUpperCase());
-            } catch (IllegalArgumentException illegalArgumentException) {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, illegalArgumentException.getMessage(), illegalArgumentException.getCause());
-            }
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        try {
+            return articleService.getArticlesByCategory(category.get().toUpperCase());
+        } catch (IllegalArgumentException illegalArgumentException) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, illegalArgumentException.getMessage(), illegalArgumentException.getCause());
         }
     }
 }
