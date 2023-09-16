@@ -24,6 +24,10 @@ class ArticleMapperTest {
     @Autowired
     ArticleMapper articleMapper;
 
+    @BeforeAll
+    static void checkMapper() {
+        assertNotNull(ArticleMapper.INSTANCE);
+    }
 
     @Test
     void articleToArticleDTO() throws Exception {

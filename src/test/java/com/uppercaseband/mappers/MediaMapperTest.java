@@ -20,6 +20,11 @@ class MediaMapperTest {
     MediaMapper mediaMapper;
 
 
+    @BeforeAll
+    static void checkMapper() {
+        assertNotNull(MediaMapper.INSTANCE);
+    }
+
     @Test
     void mediaToMediaDTO() throws Exception {
 
