@@ -18,8 +18,8 @@ http://localhost:8080/api/v1/articles
 JUnit5 tests were written to assert functionalities of the mapper, service, and controller classes.
 
 ## MySQL database
-This web application also has a code branch that supports the use of MySQL database.
-Clone the repository branch ``mysql-setup`` and follow the project setup steps below.
+This web application supports the use of MySQL database by passing the Spring active profile ``localmysql``.
+Otherwise, the web application runs against the H2 in-memory database by default.
 
 ## Project setup
 
