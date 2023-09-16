@@ -6,19 +6,17 @@ import com.uppercaseband.domain.Media;
 import com.uppercaseband.domain.MediaType;
 import com.uppercaseband.repositories.ArticleRepository;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 // the CommandLineRunner is a Spring Boot-specific class that will run on application start-up
+@RequiredArgsConstructor
 @Component
 @Slf4j
 public class Bootstrap implements CommandLineRunner {
     private final ArticleRepository articleRepository;
-
-    public Bootstrap(ArticleRepository articleRepository) {
-        this.articleRepository = articleRepository;
-    }
 
     @Override
     public void run(String... args) throws Exception {
