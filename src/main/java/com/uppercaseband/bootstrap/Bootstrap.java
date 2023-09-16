@@ -60,7 +60,7 @@ public class Bootstrap implements CommandLineRunner {
         Article article3 = new Article();
         article3.setTitle("'Time Space Warp' Music Video Launch");
         article3.setDescription("July 12, 2013 – Prestige Bar, North York");
-        article3.setDisplayOrder(200);
+        article3.setDisplayOrder(300);
         article3.setCategory(Category.EVENTS);
 
         Media article3Media = new Media();
