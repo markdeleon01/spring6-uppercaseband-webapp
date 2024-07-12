@@ -19,7 +19,7 @@ public class Bootstrap implements CommandLineRunner {
     private final ArticleRepository articleRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         loadArticles();
     }
 
@@ -68,6 +68,6 @@ public class Bootstrap implements CommandLineRunner {
         article3.setMedia(article3Media);
         articleRepository.save(article3);
 
-        log.debug("Articles loaded: "+ articleRepository.count());
+        log.debug("Articles loaded: {}", articleRepository.count());
     }
 }

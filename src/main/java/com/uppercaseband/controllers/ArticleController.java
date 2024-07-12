@@ -1,6 +1,5 @@
 package com.uppercaseband.controllers;
 
-import com.uppercaseband.model.ArticleDTO;
 import com.uppercaseband.model.ArticleListDTO;
 import com.uppercaseband.services.ArticleService;
 import org.springframework.http.HttpStatus;
