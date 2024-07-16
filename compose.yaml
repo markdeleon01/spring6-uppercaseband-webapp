@@ -1,0 +1,33 @@
+# ./mvnw clean package spring-boot:build-image
+
+# docker run --name mysql -d -e MYSQL_USER=uppercasedbadmin -e MYSQL_PASSWORD=password -e MYSQL_DATABASE=uppercasedb -e MYSQL_ROOT_PASSWORD=password mysql:8
+
+# docker run --name uppercasemvc -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=localmysql -e SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/uppercasedb -e SERVER_PORT=8080 --link mysql:mysql docker.io/library/uppercaseband:0.0.1-SNAPSHOT
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: uppercasedb
+      MYSQL_USER: uppercasedbadmin
+      MYSQL_PASSWORD: password
+    expose:
+      - "3306"
+
+  uppercasemvc:
+    container_name: uppercasemvc
+    image: docker.io/library/uppercaseband:0.0.1-SNAPSHOT
+    platform: linux/amd64
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_PROFILES_ACTIVE=localmysql
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/uppercasedb
+      - SERVER_PORT=8080
+    depends_on:
+      - mysql
