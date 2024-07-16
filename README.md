@@ -43,3 +43,5 @@ Otherwise, the web application runs against the H2 in-memory database by default
    ```
 8. Open a browser window and navigate to: http://localhost:8080/api/v1/articles
 9. Download the Postman desktop app:  https://www.postman.com
+10. Use the Postman desktop app to access the exposed APIs.
+11. Open the Swagger UI / Open API definition: http://localhost:8080/swagger-ui.html
