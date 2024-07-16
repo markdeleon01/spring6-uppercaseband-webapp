@@ -34,7 +34,7 @@ Otherwise, the web application runs against the H2 in-memory database by default
 6. Navigate to the project folder and install
    ```sh
    mvn compile
-   mvn test
+   mvn verify
    mvn package
    ```
 7. Run the web application (and specify active profile to use local MySQL)
