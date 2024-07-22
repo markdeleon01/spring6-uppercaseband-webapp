@@ -40,7 +40,7 @@ class ArticleControllerTest {   //this is essentially an integration test
 
 
     @BeforeAll
-    static void setUp() throws Exception {
+    static void setUp() {
 
         article1 = new ArticleDTO();
         article1.setTitle("Tanging Ikaw");
